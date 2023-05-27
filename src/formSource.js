@@ -45,26 +45,30 @@ export const userInputs = [
 export const productInputs = [
   {
     id: 1,
+    field: "name",
     label: "Title",
     type: "text",
     placeholder: "Latte",
   },
   {
     id: 2,
+    field: "description",
     label: "Description",
     type: "text",
     placeholder: "Description",
   },
   {
     id: 3,
+    field: "category",
     label: "Category",
-    type: "text",
+    type: "number",
     placeholder: "Coffee",
   },
   {
     id: 4,
+    field: "price",
     label: "Price",
-    type: "text",
+    type: "number",
     placeholder: "$4",
   },
 ];

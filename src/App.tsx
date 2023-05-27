@@ -30,6 +30,10 @@ function App() {
                 element={<New inputs={productInputs} title="Add New Product" />}
               />
             </Route>
+            <Route path="orders">
+              <Route index element={<List type={'orders'}/>} />
+              <Route path=":orderId" element={<Single />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

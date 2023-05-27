@@ -1,11 +1,20 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { productColumns, userColumns, userRows } from "../../datatablesource";
+import { productColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import http from "../../services/HttpService";
 
 const DatatableProducts = () => {
-  const [data, setData] = useState(userRows);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    http.get("/api/product").then((res) => {
+      if (res.status == 200) {
+        setData(res.data);
+      }
+    });
+  }, []);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
