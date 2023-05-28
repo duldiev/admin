@@ -12,10 +12,8 @@ import dayjs from "dayjs";
 
 const List = () => {
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     let tempOrders: any = orders
     http.get("/api/order").then((res) => {
       if (res.status == 200) {
@@ -25,23 +23,10 @@ const List = () => {
         })
       }
     }).finally(() => {
-      setLoading(false)
       setOrders(tempOrders);
     });
   }, []);
 
-  const rows = [
-    {
-      id: 1143155,
-      product: "Arabica coffee beans",
-      img: "https://www.nescafe.com/mena/sites/default/files/arabica-coffee-beans-thumbnail-desktop.jpg",
-      customer: "Yelzhas Abdikali",
-      date: "1 March",
-      amount: 785,
-      method: "Cash on Delivery",
-      status: "Approved",
-    },
-  ];
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -55,7 +40,7 @@ const List = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {!loading && orders.map((row: any, index: number) => (
+          {orders.map((row: any, index: number) => (
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">{row['product_name']}</TableCell>

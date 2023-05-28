@@ -52,6 +52,7 @@ const Datatable = () => {
         rows={data}
         columns={userColumns}
         pageSize={9}
+        actionColumn={actionColumn}
         rowsPerPageOptions={[9]}
         checkboxSelection
       />

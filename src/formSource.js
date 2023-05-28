@@ -44,6 +44,13 @@ export const userInputs = [
 
 export const productInputs = [
   {
+    id: 0,
+    field: "image",
+    label: "",
+    type: "file",
+    placeholder: "Image ",
+  },
+  {
     id: 1,
     field: "name",
     label: "Title",

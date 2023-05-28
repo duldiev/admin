@@ -15,14 +15,14 @@ const New = (props: { inputs: any, title: string }) => {
       name: formData.get('name'),
       price: Number(formData.get('price') as string),
       description: formData.get('description'),
-      image: 'image',
+      image: formData.get('image'),
       category: Number(formData.get('category') as string),
     }
 
-    http.post("/api/product/", body).then(res => {
-      console.log('====================================');
-      console.log(res);
-      console.log('====================================');
+    http.post("/api/product/", body, {
+      headers: {
+        "Content-type": "multipart/form-data",
+      }
     });
   };
 
