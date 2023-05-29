@@ -1,44 +1,16 @@
 export const userInputs = [
   {
     id: 1,
+    field: "username",
     label: "Username",
     type: "text",
     placeholder: "",
   },
   {
     id: 2,
-    label: "Name and surname",
-    type: "text",
-    placeholder: "",
-  },
-  {
-    id: 3,
-    label: "Email",
-    type: "mail",
-    placeholder: "@gmail.com",
-  },
-  {
-    id: 4,
-    label: "Phone",
-    type: "text",
-    placeholder: "+1 234 567 89",
-  },
-  {
-    id: 5,
+    field: "password",
     label: "Password",
     type: "password",
-  },
-  {
-    id: 6,
-    label: "Address",
-    type: "text",
-    placeholder: "Астана, Мангылык ел 53",
-  },
-  {
-    id: 7,
-    label: "Country",
-    type: "text",
-    placeholder: "Қазақстан",
   },
 ];
 

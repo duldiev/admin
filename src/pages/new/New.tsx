@@ -5,25 +5,33 @@ import http from "../../services/HttpService";
 import { Box, TextField, Button } from "@mui/material";
 import * as React from 'react';
 
-const New = (props: { inputs: any, title: string }) => {
+const New = (props: { inputs: any[], title: string }) => {
   
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    const body: any = {
-      name: formData.get('name'),
-      price: Number(formData.get('price') as string),
-      description: formData.get('description'),
-      image: formData.get('image'),
-      category: Number(formData.get('category') as string),
-    }
-
-    http.post("/api/product/", body, {
-      headers: {
-        "Content-type": "multipart/form-data",
+  if (props.inputs.length == 5) {
+      const body: any = {
+        name: formData.get('name'),
+        price: Number(formData.get('price') as string),
+        description: formData.get('description'),
+        image: formData.get('image'),
+        category: Number(formData.get('category') as string),
       }
-    });
+      http.post("/api/product/", body, {
+        headers: {
+          "Content-type": "multipart/form-data",
+        }
+      });
+    } else {
+      const body: any = {
+        username: formData.get('username'),
+        password: formData.get('password'),
+        position: "BARISTA",
+      }
+      http.post("/api/admin/create-stuff-user", body);
+    }
   };
 
   return (
