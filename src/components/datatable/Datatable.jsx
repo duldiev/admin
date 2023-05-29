@@ -18,13 +18,14 @@ const Datatable = () => {
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
+    http.delete("/api/admin/delete-user/" + id);
   };
 
   const actionColumn = [
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 100,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -39,6 +40,7 @@ const Datatable = () => {
       },
     },
   ];
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -50,9 +52,8 @@ const Datatable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns}
+        columns={userColumns.concat(actionColumn)}
         pageSize={9}
-        actionColumn={actionColumn}
         rowsPerPageOptions={[9]}
         checkboxSelection
       />

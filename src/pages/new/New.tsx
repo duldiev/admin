@@ -4,14 +4,17 @@ import Navbar from "../../components/navbar/Navbar";
 import http from "../../services/HttpService";
 import { Box, TextField, Button } from "@mui/material";
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
 
 const New = (props: { inputs: any[], title: string }) => {
+  const navigate = useNavigate();
   
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-  if (props.inputs.length == 5) {
+    if (props.inputs.length == 5) {
       const body: any = {
         name: formData.get('name'),
         price: Number(formData.get('price') as string),
@@ -32,7 +35,9 @@ const New = (props: { inputs: any[], title: string }) => {
       }
       http.post("/api/admin/create-stuff-user", body);
     }
-  };
+    
+    navigate('/products')
+  }
 
   return (
     <div className="new">

@@ -12,8 +12,8 @@ import {
 const Chart = (props: { aspect: any, title: any, totals: any[] }) => {
   const [data, setData] = useState([
     { name: "December", total: 0 },
-    { name: "January", total: 0 },
-    { name: "February", total: 0 },
+    { name: "January", total: 10 },
+    { name: "February", total: 100 },
     { name: "March", total: 0 },
     { name: "April", total: 0 },
     { name: "May", total: 0 },
